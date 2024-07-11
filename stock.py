@@ -95,12 +95,6 @@ st.plotly_chart(fig)
 
 st.title('Distribution of Daily Returns')
 
-# Calculate Daily Returns
-data['Daily Return'] = data['Close'].pct_change()
-
-# Drop NaN values for plotting
-daily_returns = data['Daily Return'].dropna()
-
 # Plotly Histogram with KDE
 fig = ff.create_distplot(
     [daily_returns], 
@@ -113,7 +107,5 @@ fig.update_layout(
     xaxis_title='Daily Return',
     yaxis_title='Frequency'
 )
-
-# Display plot in Streamlit
 st.plotly_chart(fig)
 
