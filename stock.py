@@ -97,21 +97,23 @@ st.title('Distribution of Daily Returns')
 
 # Calculate Daily Returns
 data['Daily Return'] = data['Close'].pct_change()
-
 # Drop NaN values for plotting
 daily_returns = data['Daily Return'].dropna()
 
 # Plotly Histogram with KDE
-fig = ff.create_distplot(
-    [daily_returns], 
-    group_labels=['Daily Return'], 
-    bin_size=0.01, 
-    show_rug=False
-)
+fig = go.Figure()
+fig.add_trace(go.Histogram(
+    x=daily_returns, nbinsx=100, histnorm='probability density', name='Histogram'
+))
+fig.add_trace(go.Scatter(
+    x=daily_returns, y=daily_returns.rolling(window=20).mean(), mode='lines', name='KDE'
+))
+
 fig.update_layout(
     title='Distribution of Daily Returns',
     xaxis_title='Daily Return',
     yaxis_title='Frequency'
 )
+
 st.plotly_chart(fig)
 
