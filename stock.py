@@ -10,6 +10,7 @@ import plotly.figure_factory as ff
     
 st.file_uploader("Upload your input file", type=["csv"], key="uploaded_file")
 data = pd.read_table(st.session_state["uploaded_file"] , sep=",", header=0)
+st.title(data)
 st.dataframe(data)
 
 ### Step 2: Data Cleaning
