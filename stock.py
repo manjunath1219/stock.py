@@ -20,7 +20,7 @@ missing_values = data.isnull().sum()
 st.dataframe(missing_values)
 
 ### Drop missing values
-st.title('Data after droping missing values')
+st.title('Data after droping null values')
 data = data.drop(['Dividends', 'Stock Splits'], axis=1)
 st.dataframe(data)
 
