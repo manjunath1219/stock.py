@@ -89,18 +89,3 @@ fig.update_layout(
 # Display plot in Streamlit
 st.plotly_chart(fig)
 
-####################################
-
-data['Date'] = data['Date'].dt.strftime('%Y-%m-%d')
-st.heatmap(Date=data.Date,
-                       data=data,
-                       month_grid=True,
-                       horizontal=True,
-                       value_label=True,
-                       date_label=False,
-                       weekday_label=True,
-                       month_label=True,
-                       year_label=True,
-                       colorbar=True,
-                       fontfamily="monospace",
-                       fontsize=12)
